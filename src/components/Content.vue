@@ -1,5 +1,22 @@
 <template>
   <div class="container">
+
+    <v-btn
+      v-scroll="onScroll"
+      v-show="fab"
+      fab
+      dark
+      fixed
+      bottom
+      right
+      elevation="4"
+      color="grey darken-2"
+      class="button"
+      @click="toTop"
+    >
+      <v-icon>keyboard_arrow_up</v-icon>
+    </v-btn>
+
     <div class="company-title" id="company">
         <h1>Companhia</h1>
     </div>
@@ -105,10 +122,31 @@
 
 export default {
   name: 'Content.vue',
+
+  data: () => ({
+    fab: false
+  }),
+
+  methods: {
+    onScroll (e) {
+      if (typeof window === 'undefined') return
+      const top = window.pageYOffset ||   e.target.scrollTop || 0
+      this.fab = top > 300
+    },
+    
+    toTop () {
+      this.$vuetify.goTo(0)
+    }
+  }
 };
 </script>
 
 <style>
+.button {
+  transition: background-color .3s, 
+  opacity .5s, visibility .5s;
+}
+
 .container {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
