@@ -143,10 +143,9 @@ export default {
 </script>
 
 <style>
-.fade-enter, .fade-leave {
+.fade-enter, .fade-leave-to {
 	opacity: 0;
 }
-
 .fade-enter-active, .fade-leave-active {
 	transition: opacity 2s;
 }
