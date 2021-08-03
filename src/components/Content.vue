@@ -1,21 +1,22 @@
 <template>
   <div class="container">
 
-    <v-btn
-      v-scroll="onScroll"
-      v-show="fab"
-      fab
-      dark
-      fixed
-      bottom
-      right
-      elevation="4"
-      color="grey darken-2"
-      class="button"
-      @click="toTop"
-    >
-      <v-icon>keyboard_arrow_up</v-icon>
-    </v-btn>
+    <transition name="fade">
+      <v-btn
+        v-scroll="onScroll"
+        v-show="fab"
+        fab
+        dark
+        fixed
+        bottom
+        right
+        elevation="4"
+        color="grey darken-2"
+        @click="toTop"
+      >
+        <v-icon>keyboard_arrow_up</v-icon>
+      </v-btn>
+    </transition>
 
     <div class="company-title" id="company">
         <h1>Companhia</h1>
@@ -142,9 +143,12 @@ export default {
 </script>
 
 <style>
-.button {
-  transition: background-color .3s, 
-  opacity .5s, visibility .5s;
+.fade-enter, .fade-leave {
+	opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+	transition: opacity 2s;
 }
 
 .container {
